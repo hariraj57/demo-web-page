@@ -1,72 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dead Poets Society | Bookstore</title>
 
-    <style>
-        body{
-            margin:0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            color:white;
-            text-align:center;
-        }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        .container{
-            background: rgba(255,255,255,0.15);
-            padding:40px;
-            border-radius:15px;
-        }
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-        h1{
-            font-size:50px;
-            margin-bottom:10px;
-        }
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0f0f0f;
+      color:white;
+      overflow-x:hidden;
+    }
 
-        p{
-            font-size:20px;
-        }
+    /* NAVBAR */
 
-        button{
-            margin-top:20px;
-            padding:10px 20px;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-            font-size:16px;
-        }
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.6);
+      backdrop-filter:blur(10px);
+    }
 
-        button:hover{
-            background:#ddd;
-        }
-    </style>
+    .logo{
+      font-family:'Cinzel',serif;
+      font-size:28px;
+      color:#f5d37a;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:#f5d37a;
+    }
+
+    /* HERO SECTION */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.75)),
+      url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1400&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-family:'Cinzel',serif;
+      font-size:70px;
+      color:#f5d37a;
+      margin-bottom:20px;
+      text-shadow:0 0 20px rgba(245,211,122,0.5);
+    }
+
+    .hero-content p{
+      max-width:700px;
+      margin:auto;
+      font-size:18px;
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    .buttons{
+      margin-top:35px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border:none;
+      border-radius:50px;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s ease;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .primary{
+      background:#f5d37a;
+      color:#111;
+    }
+
+    .primary:hover{
+      transform:translateY(-4px);
+      box-shadow:0 10px 25px rgba(245,211,122,0.4);
+    }
+
+    .secondary{
+      border:2px solid #f5d37a;
+      color:#f5d37a;
+      background:transparent;
+    }
+
+    .secondary:hover{
+      background:#f5d37a;
+      color:#111;
+    }
+
+    /* FEATURES */
+
+    .features{
+      padding:100px 8%;
+      background:#151515;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:42px;
+      color:#f5d37a;
+      font-family:'Cinzel',serif;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#1e1e1e;
+      padding:35px;
+      border-radius:20px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#f5d37a;
+    }
+
+    .card p{
+      color:#bbb;
+      line-height:1.7;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#0b0b0b;
+      color:#999;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:42px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        gap:15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Welcome!</h1>
+  <!-- NAVBAR -->
 
-        <p>
-            This is my first GitHub demo webpage.
-        </p>
+  <nav>
+    <div class="logo">Dead Poets Society</div>
 
-        <button onclick="showMessage()">
-            Click Here
-        </button>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#features">Collections</a></li>
+      <li><a href="#">Authors</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>Dead Poets Society</h1>
+
+      <p>
+        Discover timeless literature, dark academia aesthetics,
+        classic poetry, fantasy worlds, and stories that stay with you forever.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="btn primary">Explore Books</a>
+        <a href="#" class="btn secondary">Join Community</a>
+      </div>
+
     </div>
 
-    <script>
-        function showMessage() {
-            alert("Welcome to my webpage!");
-        }
-    </script>
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="features" id="features">
+
+    <div class="section-title">
+      <h2>Featured Collections</h2>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Classic Literature</h3>
+        <p>
+          Dive into timeless masterpieces from legendary authors and poets.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Dark Academia</h3>
+        <p>
+          A curated collection inspired by mystery, poetry, and intellectual aesthetics.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Fantasy Realm</h3>
+        <p>
+          Escape into magical kingdoms, epic adventures, and unforgettable worlds.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Modern Bestsellers</h3>
+        <p>
+          Stay updated with trending novels loved by readers worldwide.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Dead Poets Society Bookstore | Read. Dream. Inspire.
+  </footer>
 
 </body>
 </html>
